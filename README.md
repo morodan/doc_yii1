@@ -67,13 +67,24 @@ ca sa poti face migrate, trebuie sa fii in folderul `protected` aici o sa mai ve
 se da comanda: `./yiic migrate`
 
 ##daca vrei sa faci migrate doar la una anume atunci: 
-`./yiic migrate up 3` de exemplu, sau daca stii numele migrarii cu care vrei sa te joci: `./yiic migrate to 101010_123233` de ex.
+`./yiic migrate up 3` de exemplu, 
+
+sau daca stii numele migrarii cu care vrei sa te joci: 
+`./yiic migrate to 101010_123233` de ex.
 
 ##sa dai migrarile inapoi, reverting migrations 
-se foloseste comanda: `./yiic migrate down [step]` unde `step` ii optional si reprezinta cate migrari vrei sa faci inapoi, default ii 1
+se foloseste comanda: 
+
+`./yiic migrate down [step]` 
+
+unde `step` ii optional si reprezinta cate migrari vrei sa faci inapoi, default ii 1
 
 ##daca vrei sa faci redoing migrations
-inseamna ca prima data faci reverting unde vrei sa ajungi si apoi aplici migrarea dorita, cu comanda: `./yiic migrate redo [step]` unde step ii cati pasi vrei sa dai inapoi, default ii 1
+inseamna ca prima data faci reverting unde vrei sa ajungi si apoi aplici migrarea dorita, cu comanda: 
+
+`./yiic migrate redo [step]` 
+
+unde step ii cati pasi vrei sa dai inapoi, default ii 1
 
 ##afiseaza informatii despre migrare
 folosesti comenzile:
@@ -85,7 +96,8 @@ folosesti comenzile:
 unde `limit` specifica numarul de migrari de afisate. default sunt toate.
 prima comanda afiseaza migrarile care s-au aplicat, iar cea de a doua doar migrarile care inca nu s-au aplicat
 
-##mai multe despre migrari poti gasi [aici - documentatia oficiala pt Yii 1.1](http://www.yiiframework.com/doc/guide/1.1/en/database.migration)
+##mai multe despre migrari
+poti gasi [aici - documentatia oficiala pt Yii 1.1](http://www.yiiframework.com/doc/guide/1.1/en/database.migration)
 
 
 
