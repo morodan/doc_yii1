@@ -118,3 +118,21 @@ Here are the generic column types you can use to keep migrations DB independent,
 The implementation uses `CDbSchema->getColumnType()`, and you can find more information here: [official documentation](http://www.yiiframework.com/doc/api/1.1/CDbSchema#getColumnType-detail)
 
 
+#Alte variabile de folosit si de stiut
+
+curent user ID se poate afla cu:
+
+`Yii::app()->user->id` sau `Yii::app()->getUser()->getId()`
+
+#Working with request
+You can access the request component in your web application by using Yii::app()-
+>getRequest() . So, let's review the most useful methods and their usage, methods that
+return different parts of the current URL. In the following table, returned parts are marked with a bold font.
+
+```
+getUrl         http://cookbook.local/*test/index?var=val*
+getHostInfo    *http://cookbook.local*/test/index?var=val
+getPathInfo    http://cookbook.local/*test/index*?var=val
+getRequestUri  http://cookbook.local/*test/index?var=val*
+getQueryString http://cookbook.local/test/index?*var=val*
+```
