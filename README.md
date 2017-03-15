@@ -135,6 +135,44 @@ You can access the request component in your web application by using `Yii::app(
 | getRequestUri | hxxp://cookbook.local/**test/index?var=val** |
 | getQueryString | hxxp://cookbook.local/test/index?**var=val** |
 
+# Customizare operatiile de `create` si `update` 
+ambele operati folosesc `_form.php` din views. De exemplu ca sa genereze un dropdown cu ceva continut, putem folosi:
+
+```php
+<?php echo $form->dropDownList($model,'status',Lookup::items('PostStatus')); 
+// aici status si PostStatus sunt un fel de ex. pt o aplicatie de blog, dar ca idee
+?>
+```
+
+daca vrem la salvare sau dupa salvare sa se mai intample ceva, sa prelucram ceva date, sa mai adaugam niste avioane, de genul genereaza un slug, sau inseaza ceva pt created_on sau modified_on atunci folosim ceva asemanator:
+
+```php
+protected function beforeSave()
+{
+    if(parent::beforeSave())
+    {
+        if($this->isNewRecord)
+        {
+            $this->create_time=$this->update_time=time();
+            $this->author_id=Yii::app()->user->id;
+        }
+        else
+            $this->update_time=time();
+        return true;
+    }
+    else
+        return false;
+}
+
+protected function afterSave()
+{
+    parent::afterSave();
+    Tag::model()->updateFrequency($this->_oldTags, $this->tags);
+}
+```
+
+Mai multe detalii gasesc in [documentatie] legat de ce se poate inainte si dupa salvare/stergere/etc. (http://www.yiiframework.com/doc/api/1.1/CActiveRecordBehavior/)
+
 # Using CDbCriteria
 When we use Yii's Active Record methods such as findAll or find , we can pass criteria as a parameter. It can be an array or an instance of the CDbCriteria class. This class represents query criteria, such as conditions, ordering by, limit/offset, and so on.
 
