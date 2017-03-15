@@ -171,7 +171,7 @@ protected function afterSave()
 }
 ```
 
-Mai multe detalii gasesc in [documentatie] legat de ce se poate inainte si dupa salvare/stergere/etc. (http://www.yiiframework.com/doc/api/1.1/CActiveRecordBehavior/)
+Mai multe detalii gasesc in [documentatie](http://www.yiiframework.com/doc/api/1.1/CActiveRecordBehavior/) legat de ce se poate inainte si dupa salvare/stergere/etc. 
 
 # Using CDbCriteria
 When we use Yii's Active Record methods such as findAll or find , we can pass criteria as a parameter. It can be an array or an instance of the CDbCriteria class. This class represents query criteria, such as conditions, ordering by, limit/offset, and so on.
