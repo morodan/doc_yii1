@@ -1,4 +1,4 @@
-#instalare Yii
+# instalare Yii
 - se downloadeaza versiunea 1.1.17
 - se muta `framework` folder in afara folderului accesibil de pe web, la mine ii in `/vagrant/framework` si situl ii in `/vagrant/site`
 - se ruleaza comanda pentru a instala Yii ca aplicatie din folderul `framework`:
@@ -17,7 +17,7 @@ index-test.php
 index.php
 ```
 
-#configurare Yii
+# configurare Yii
 mare parte din configurari se fac in `protected/config/main.php`
 `index.php` este un bootstrap file - ceea ce inseamna ca toate interactiunile userului vor trece pe aici
 fisierul `index-test.php` este la fel ca `index.php` doar ca fisierul de configurare este `protected/config/test.php`
@@ -117,7 +117,6 @@ Here are the generic column types you can use to keep migrations DB independent,
 
 The implementation uses `CDbSchema->getColumnType()`, and you can find more information here: [official documentation](http://www.yiiframework.com/doc/api/1.1/CDbSchema#getColumnType-detail)
 
-
 #Alte variabile de folosit si de stiut
 
 curent user ID se poate afla cu:
@@ -125,6 +124,7 @@ curent user ID se poate afla cu:
 `Yii::app()->user->id` sau `Yii::app()->getUser()->getId()`
 
 #Working with request
+
 You can access the request component in your web application by using `Yii::app()->getRequest()`. So, let's review the most useful methods and their usage, methods that return different parts of the current URL. In the following table, returned parts are marked with a bold font.
 
 | method | url |
@@ -134,4 +134,23 @@ You can access the request component in your web application by using `Yii::app(
 | getPathInfo | hxxp://cookbook.local/**test/index**?var=val |
 | getRequestUri | hxxp://cookbook.local/**test/index?var=val** |
 | getQueryString | hxxp://cookbook.local/test/index?**var=val** |
+
+#Using CDbCriteria
+When we use Yii's Active Record methods such as findAll or find , we can pass criteria as a parameter. It can be an array or an instance of the CDbCriteria class. This class represents query criteria, such as conditions, ordering by, limit/offset, and so on.
+
+##How to do it...
+
+Usually, the criteria class is used as shown in the following example:
+
+```php
+$criteria = new CDbCriteria();
+$criteria->limit = 10;
+$criteria->order= 'id DESC';
+$criteria->with = array('comments');
+$criteria->compare('approved', 1);
+$criteria->addInCondition('id', array(4, 8, 15, 16, 23, 42));
+$posts = Post::model()->findAll($criteria);
+```
+
+
 
